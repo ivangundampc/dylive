@@ -19,6 +19,23 @@ go get -v -u github.com/caiguanhao/dylive
 go get -v -u github.com/caiguanhao/dylive/dysearch
 ```
 
+Recently, Douyin added an anti-crawler on their live pages that sends "__ac_nonce" and requires client to calculate "__ac_signature"
+A node.js script is added in "acrawler" to generate "__ac_signature". Extra installation steps is required:
+```shell
+# Assume we clone this repo to "dylive"
+cd dylive/acrawler
+npm install
+```
+
+Before running any api in douyinapi, you need to do an initialization
+```go
+err = douyinapi.InitCookieGenerator("/usr/bin/node", "/home/user/dylive/acrawler/acrawler.js")
+if err != nil {
+  log.Panic(err)
+}
+monitorUser, _ := douyinapi.GetUserByName(monitorUserId)
+```
+
 ## Usage
 
 ### Search And Watch

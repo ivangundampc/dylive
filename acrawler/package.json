@@ -1,0 +1,15 @@
+{
+  "name": "yes",
+  "version": "1.0.0",
+  "description": "acrawler",
+  "main": "acrawler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.8.0",
+    "jsdom": "^18.1.0"
+  }
+}
