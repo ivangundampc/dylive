@@ -144,7 +144,7 @@ func GetUserByName(name string) (user *User, err error) {
 		Cookie, err = GenerateCookie(client, url)
 		fmt.Printf("Generate cookie: %s\n", Cookie)
 		if err != nil {
-			return
+			return nil, err
 		}
 	}
 
@@ -154,18 +154,18 @@ func GetUserByName(name string) (user *User, err error) {
 	req.Header.Set("Cookie", Cookie)
 
 	if err != nil {
-		return
+		return nil, err
 	}
 	var resp *http.Response
 	resp, err = client.Do(req)
 	if err != nil {
-		return
+		return nil, err
 	}
 	defer resp.Body.Close()
 	var b []byte
 	b, err = ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return
+		return nil, err
 	}
 
 	res, err := parseLivePageHtml(string(b))
