@@ -172,6 +172,7 @@ func GetUserByName(name string) (user *User, err error) {
 	// error may due to cookie invalid, clear the cookie to generate at next time
 	if err != nil {
 		Cookie = ""
+		return nil, err
 	}
 
 	return res, nil
